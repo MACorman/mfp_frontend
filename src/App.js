@@ -15,29 +15,33 @@ class App extends React.Component {
     .then(resp => resp.json())
     .then(users => this.setState({users}))
 
-    if (sessionStorage.length > 0 && this.state.currentUser !== null) {
-      this.setState({ currentUser: JSON.parse(sessionStorage.getItem("currentUser")), loggedIn: JSON.parse(sessionStorage.getItem("loggedIn")) })
+    if (sessionStorage.length > 0) {
+      this.setState({ currentUser: JSON.parse(sessionStorage.getItem("currentUser")) })
     }
   }
 
   login = (user) => {
-    console.log("user to log in", user)
     let currentUser = this.state.users.find(u => u.name === user.username)
-    console.log("current user", currentUser)
-    this.setState({currentUser: currentUser}, () => {
-
-      sessionStorage.setItem("currentUser", JSON.stringify(this.state.currentUser))
-    })
-    this.setState({loggedIn: true}, () => { sessionStorage.setItem("loggedIn", JSON.stringify(this.state.loggedIn)) })
+    this.setState({ currentUser }, console.log("inside init set state", this.state.currentUser))
+    sessionStorage.setItem("currentUser", JSON.stringify(currentUser))
   }
+
+  logout = () => {
+    this.setState({currentUser: null})
+    sessionStorage.clear()
+  }
+
 
   render() {
     return (
       <div>
         {
-          this.state.loggedIn 
+          this.state.currentUser 
           ? 
-          <UserContainer currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}/>
+          <UserContainer 
+          currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}
+          logout={this.logout} 
+          />
           :
           <LoginSignUp login={this.login}/>
         }
@@ -51,3 +55,4 @@ class App extends React.Component {
 }
 
 export default App;
+
