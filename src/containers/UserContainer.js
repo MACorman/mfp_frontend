@@ -8,7 +8,7 @@ class UserContainer extends React.Component {
         return(
             <div>
                 <p>{`Welcome ${this.props.currentUser.name}!`}</p>
-                <DiaryContainer />
+                <DiaryContainer currentUser={this.props.currentUser}/>
                 <WeightContainer />
                 <Logout logout={this.props.logout}/>
             </div>
