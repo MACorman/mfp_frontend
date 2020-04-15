@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginSignUp from './components/LoginSignUp';
 import UserContainer from './containers/UserContainer';
+import { Switch, Route, withRouter } from 'react-router-dom'
 
 class App extends React.Component {
   
@@ -24,27 +25,29 @@ class App extends React.Component {
     let currentUser = this.state.users.find(u => u.name === user.username)
     this.setState({ currentUser }, console.log("inside init set state", this.state.currentUser))
     sessionStorage.setItem("currentUser", JSON.stringify(currentUser))
+    this.props.history.push('/')
   }
 
   logout = () => {
     this.setState({currentUser: null})
     sessionStorage.clear()
+    this.props.history.push('/login')
   }
 
 
   render() {
     return (
       <div>
-        {
-          this.state.currentUser 
-          ? 
-          <UserContainer 
-          currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}
-          logout={this.logout} 
-          />
-          :
-          <LoginSignUp login={this.login}/>
-        }
+        <Switch>
+          <Route exact path='/login' render={routerProps => <LoginSignUp 
+            {...routerProps} 
+            login={this.login}/>}/> 
+          <Route exact path='/' render={routerProps => <UserContainer 
+            {...routerProps}
+            currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}
+            logout={this.logout} 
+            />}/>
+        </Switch>
       </div>
     );
 
@@ -54,5 +57,5 @@ class App extends React.Component {
 
 }
 
-export default App;
+export default withRouter(App);
 

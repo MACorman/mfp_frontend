@@ -38,7 +38,7 @@ class FoodSearch extends React.Component {
                     &&
                     <div>
                         <div>{this.state.results.map(food => {
-                            return <FoodResultCard key={food.food.foodId} {...food}/>
+                            return <FoodResultCard key={food.food.foodId} addFoodToDiary={this.props.addFoodToDiary} {...food}/>
                         })}</div>
                     </div>
                 }
