@@ -19,21 +19,41 @@ class DiaryContainer extends React.Component {
         this.setState({ showSearch: true})
     }
 
-    addFoodToDiary = (foodObj, ) => {
+    addFoodToDiary = (foodID, servings) => {
         this.setState({ showSearch: false})
         console.log('success')
 
-        switch(this.state.category) {
-            case 'breakfast':
-                this.setState({ breakfast: [...this.state.breakfast, foodObj]})
-                break
-            case 'lunch':
-                this.setState({ lunch: [...this.state.lunch, foodObj]})
-                break
-            case 'dinner':
-                this.setState({ dinner: [...this.state.dinner, foodObj]})
-                break
-        }
+        fetch('https://api.edamam.com/api/food-database/nutrients?app_id=7d8c2753&app_key=d51390081730b31e3eff5aad9721f450', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                "ingredients": [
+                    {
+                      "quantity": parseInt(servings),
+                      "measureURI": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
+                      "foodId": foodID
+                    }
+                  ]
+            })
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            switch(this.state.category) {
+                case 'breakfast':
+                    this.setState({ breakfast: [...this.state.breakfast, data]})
+                    break
+                case 'lunch':
+                    this.setState({ lunch: [...this.state.lunch, data]})
+                    break
+                case 'dinner':
+                    this.setState({ dinner: [...this.state.dinner, data]})
+                    break
+            }
+        })
+
     }
 
     logButtonHandler = () => {
@@ -52,13 +72,13 @@ class DiaryContainer extends React.Component {
                     <div>
                         <div>{date}</div>
                         <h4>Breakfast</h4>
-                        {this.state.breakfast.map(food => <div>{food.name}</div>)}
+                        {this.state.breakfast.map(food => <div>{food.calories}</div>)}
                         <button name='breakfast' onClick={this.mealButtonHandler}>Add Breakfast</button>
                         <h4>Lunch</h4>
-                        {this.state.lunch.map(food => <div>{food.name}</div>)}
+                        {this.state.lunch.map(food => <div>{food.calories}</div>)}
                         <button  name='lunch' onClick={this.mealButtonHandler}>Add Lunch</button>
                         <h4>Dinner</h4>
-                        {this.state.dinner.map(food => <div>{food.name}</div>)}
+                        {this.state.dinner.map(food => <div>{food.calories}</div>)}
                         <button name='dinner' onClick={this.mealButtonHandler}>Add Dinner</button>
                         <br/>
                         <button>Log Food Diary</button>
@@ -73,5 +93,5 @@ class DiaryContainer extends React.Component {
 
 export default DiaryContainer
 
-// click 'add ....' button takes you to food search
+// can add foods to diary from search however does not pull diaries from database
 // click log food diary does post to diaries api
