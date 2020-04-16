@@ -24,6 +24,8 @@ class FoodSearch extends React.Component {
             console.log(data.hints)
             this.setState({ results: data.hints})
         })
+
+        
     }
 
     render() {
