@@ -23,6 +23,36 @@ const options = [
         text: '4',
         value: '4'
     },
+    {
+        key: '5',
+        text: '5',
+        value: '5'
+    },
+    {
+        key: '6',
+        text: '6',
+        value: '6'
+    },
+    {
+        key: '7',
+        text: '7',
+        value: '7'
+    },
+    {
+        key: '8',
+        text: '8',
+        value: '8'
+    },
+    {
+        key: '9',
+        text: '9',
+        value: '9'
+    },
+    {
+        key: '10',
+        text: '10',
+        value: '10'
+    }, 
 ]
 
 class FoodResultCard extends React.Component {
@@ -32,36 +62,11 @@ class FoodResultCard extends React.Component {
     }
 
     buttonHandler = () => {
-        // let foodObj = {
-        //     name: this.props.food.label,
-        //     cals: parseInt(this.props.food.nutrients.ENERC_KCAL),
-        //     protein: Math.ceil(parseInt(this.props.food.nutrients.PROCNT)),
-        //     fat: Math.ceil(parseInt(this.props.food.nutrients.FAT)),
-        //     carbs: Math.ceil(parseInt(this.props.food.nutrients.CHOCDF))
-        // }
-
-        // fetch('https://api.edamam.com/api/food-database/nutrients?app_id=7d8c2753&app_key=d51390081730b31e3eff5aad9721f450', {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         "ingredients": [
-        //             {
-        //               "quantity": 1,
-        //               "measureURI": "http://www.edamam.com/ontologies/edamam.owl#Measure_serving",
-        //               "foodId": "food_bllzl82a5fkj4yanmzoztapdyryz"
-        //             }
-        //           ]
-        //     })
-        // })
-        // .then(resp => resp.json())
-        // .then(console.log)
         let foodID = this.props.food.foodId
         let servings = this.state.servings
+        let foodName = this.props.food.label
 
-        this.props.addFoodToDiary(foodID, servings)
+        this.props.addFoodToDiary(foodID, servings, foodName)
     }
 
     handleClickQuantity = () => {
