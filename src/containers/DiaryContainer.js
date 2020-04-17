@@ -1,6 +1,8 @@
 import React from 'react'
 import FoodSearch from '../components/FoodSearch'
 import { Switch, Route, withRouter } from 'react-router-dom'
+import FoodDiaryCard from '../components/FoodDiaryCard'
+import CalorieCalc from '../components/CalorieCalc'
 
 
 class DiaryContainer extends React.Component {
@@ -19,7 +21,7 @@ class DiaryContainer extends React.Component {
         this.setState({ showSearch: true})
     }
 
-    addFoodToDiary = (foodID, servings) => {
+    addFoodToDiary = (foodID, servings, foodName) => {
         this.setState({ showSearch: false})
         console.log('success')
 
@@ -41,15 +43,21 @@ class DiaryContainer extends React.Component {
         })
         .then(resp => resp.json())
         .then(data => {
+            let foodData = {
+                name: foodName,
+                servings: servings,
+                data
+            }
+        
             switch(this.state.category) {
                 case 'breakfast':
-                    this.setState({ breakfast: [...this.state.breakfast, data]})
+                    this.setState({ breakfast: [...this.state.breakfast, foodData]})
                     break
                 case 'lunch':
-                    this.setState({ lunch: [...this.state.lunch, data]})
+                    this.setState({ lunch: [...this.state.lunch, foodData]})
                     break
                 case 'dinner':
-                    this.setState({ dinner: [...this.state.dinner, data]})
+                    this.setState({ dinner: [...this.state.dinner, foodData]})
                     break
             }
         })
@@ -71,14 +79,15 @@ class DiaryContainer extends React.Component {
                     :
                     <div>
                         <div>{date}</div>
+                        <CalorieCalc breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
                         <h4>Breakfast</h4>
-                        {this.state.breakfast.map(food => <div>{food.calories}</div>)}
+                        {this.state.breakfast.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
                         <button name='breakfast' onClick={this.mealButtonHandler}>Add Breakfast</button>
                         <h4>Lunch</h4>
-                        {this.state.lunch.map(food => <div>{food.calories}</div>)}
+                        {this.state.lunch.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
                         <button  name='lunch' onClick={this.mealButtonHandler}>Add Lunch</button>
                         <h4>Dinner</h4>
-                        {this.state.dinner.map(food => <div>{food.calories}</div>)}
+                        {this.state.dinner.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
                         <button name='dinner' onClick={this.mealButtonHandler}>Add Dinner</button>
                         <br/>
                         <button>Log Food Diary</button>

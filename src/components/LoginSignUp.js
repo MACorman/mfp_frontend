@@ -17,7 +17,7 @@ class LoginSignUp extends React.Component {
             <div>
                 <form onSubmit={this.submitHandler}>
                     <input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-                    <input type='text' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+                    <input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
                     <input type='submit' value='Login'/>
                 </form>
                 <p>Don't have an account yet?</p>
