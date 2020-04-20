@@ -3,12 +3,14 @@ import FoodSearch from '../components/FoodSearch'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import FoodDiaryCard from '../components/FoodDiaryCard'
 import CalorieCalc from '../components/CalorieCalc'
+import DiaryPage from '../components/DiaryPage'
+import NutritionalBreakdown from '../components/NutritionalBreakdown'
 
 
 class DiaryContainer extends React.Component {
 
     state = {
-        showSearch: false,
+        // showSearch: false,
         category: null,
         breakfast: [],
         lunch: [],
@@ -18,7 +20,8 @@ class DiaryContainer extends React.Component {
     mealButtonHandler = (e) => {
         let category = e.target.name
         this.setState ({ category })
-        this.setState({ showSearch: true})
+        // this.setState({ showSearch: true})
+        this.props.history.push('/search')
     }
 
     addFoodToDiary = (foodID, servings, foodName) => {
@@ -69,32 +72,14 @@ class DiaryContainer extends React.Component {
     }
 
     render() {
-        let date = new Date().toDateString()
+        // let date = new Date().toDateString()
         return(
             <div>
-                <p>Hello from Diary Container</p>
-                {this.state.showSearch 
-                    ? 
-                    <FoodSearch addFoodToDiary={this.addFoodToDiary}/>
-                    :
-                    <div>
-                        <div>{date}</div>
-                        <CalorieCalc breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
-                        <h4>Breakfast</h4>
-                        {this.state.breakfast.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <button name='breakfast' onClick={this.mealButtonHandler}>Add Breakfast</button>
-                        <h4>Lunch</h4>
-                        {this.state.lunch.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <button  name='lunch' onClick={this.mealButtonHandler}>Add Lunch</button>
-                        <h4>Dinner</h4>
-                        {this.state.dinner.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <button name='dinner' onClick={this.mealButtonHandler}>Add Dinner</button>
-                        <br/>
-                        <button>Log Food Diary</button>
-                    </div>
-                }
-                {/* <Route exact path='/food_search' render={routerProps => <FoodSearch {...routerProps}/>}/> */}
-                
+                <Switch>
+                    <Route exact path='/search' render={routerProps => <FoodSearch {...routerProps} addFoodToDiary={this.addFoodToDiary}/>}/>
+                    <Route exact path='/profile' render={routerProps => <DiaryPage {...routerProps} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>}/>
+                    <Route exact path='/nutrition' render={routerProps => <NutritionalBreakdown {...routerProps}/>}/>
+                </Switch>
             </div>
         )
     }
@@ -104,3 +89,21 @@ export default DiaryContainer
 
 // can add foods to diary from search however does not pull diaries from database
 // click log food diary does post to diaries api
+
+
+// <div>
+//     <div>{date}</div>
+//     <CalorieCalc breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
+//     <h4>Breakfast</h4>
+//     {this.state.breakfast.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
+//     <button name='breakfast' onClick={this.mealButtonHandler}>Add Breakfast</button>
+//     <h4>Lunch</h4>
+//     {this.state.lunch.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
+//     <button  name='lunch' onClick={this.mealButtonHandler}>Add Lunch</button>
+//     <h4>Dinner</h4>
+//     {this.state.dinner.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
+//     <button name='dinner' onClick={this.mealButtonHandler}>Add Dinner</button>
+//     <br/>
+//     <button>See Daily Nutritional Info</button>
+//     <button>Log Food Diary</button>
+// </div>

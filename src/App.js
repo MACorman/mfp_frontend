@@ -25,13 +25,13 @@ class App extends React.Component {
     let currentUser = this.state.users.find(u => u.name === user.username)
     this.setState({ currentUser }, console.log("inside init set state", this.state.currentUser))
     sessionStorage.setItem("currentUser", JSON.stringify(currentUser))
-    this.props.history.push('/')
+    this.props.history.push('/profile')
   }
 
   logout = () => {
     this.setState({currentUser: null})
     sessionStorage.clear()
-    this.props.history.push('/login')
+    this.props.history.push('/')
   }
 
 
@@ -39,10 +39,10 @@ class App extends React.Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/login' render={routerProps => <LoginSignUp 
+          <Route exact path='/' render={routerProps => <LoginSignUp 
             {...routerProps} 
             login={this.login}/>}/> 
-          <Route exact path='/' render={routerProps => <UserContainer 
+          <Route exact path='/profile' render={routerProps => <UserContainer 
             {...routerProps}
             currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}
             logout={this.logout} 
