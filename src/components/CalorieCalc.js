@@ -4,7 +4,7 @@ class CalorieCalc extends React.Component {
 
     totalBreakfastIntake = () => {
         let totalBreakCal
-        if(this.props.breakfast.length > 0) {
+        if(this.props.breakfast.length) {
             let breakCalArr = this.props.breakfast.map(b => b.data.calories)
             totalBreakCal = parseInt(breakCalArr.reduce((a, b) => a + b))
         } else {
@@ -15,7 +15,7 @@ class CalorieCalc extends React.Component {
 
     totalLunchIntake = () => {
         let totalLunchCal
-        if(this.props.lunch.length > 0) {
+        if(this.props.lunch.length) {
             let lunchCalArr = this.props.lunch.map(l => l.data.calories)
             totalLunchCal = parseInt(lunchCalArr.reduce((a, b) => a + b))
         } else {
@@ -26,7 +26,7 @@ class CalorieCalc extends React.Component {
 
     totalDinnerIntake = () => {
         let totalDinnerCal 
-        if(this.props.dinner.length > 0) {
+        if(this.props.dinner.length) {
             let dinnerCalArr = this.props.breakfast.map(d => d.data.calories)
             totalDinnerCal = parseInt(dinnerCalArr.reduce((a, b) => a + b))
         } else {

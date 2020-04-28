@@ -87,7 +87,7 @@ class DiaryContainer extends React.Component {
             case 'search':
                 return <FoodSearch addFoodToDiary={this.addFoodToDiary}/>
             case 'nutrition':
-                return <NutritionalBreakdown backButton={this.backButton}/>
+                return <NutritionalBreakdown backButton={this.backButton} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
             default: 
                 return <DiaryPage nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
         }
