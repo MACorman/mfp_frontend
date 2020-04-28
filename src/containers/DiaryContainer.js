@@ -11,6 +11,7 @@ class DiaryContainer extends React.Component {
 
     state = {
         // showSearch: false,
+        show: null,
         category: null,
         breakfast: [],
         lunch: [],
@@ -21,11 +22,12 @@ class DiaryContainer extends React.Component {
         let category = e.target.name
         this.setState ({ category })
         // this.setState({ showSearch: true})
-        this.props.history.push('/search')
+        // this.props.history.push('/search')
+        this.setState({show: 'search'})
     }
 
     addFoodToDiary = (foodID, servings, foodName) => {
-        this.setState({ showSearch: false})
+        this.setState({ show: null})
         console.log('success')
 
         fetch('https://api.edamam.com/api/food-database/nutrients?app_id=7d8c2753&app_key=d51390081730b31e3eff5aad9721f450', {
@@ -69,23 +71,48 @@ class DiaryContainer extends React.Component {
 
     logButtonHandler = () => {
 
+    } 
+
+    backButton = () => {
+        this.setState({show: null})
+    }
+    
+    nutritionButtonHandler = () => {
+        // this.props.history.push('/nutrition')
+        this.setState({show: 'nutrition'})
+    }
+
+    renderComponent = () => {
+        switch(this.state.show) {
+            case 'search':
+                return <FoodSearch addFoodToDiary={this.addFoodToDiary}/>
+            case 'nutrition':
+                return <NutritionalBreakdown backButton={this.backButton}/>
+            default: 
+                return <DiaryPage nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
+        }
     }
 
     render() {
         // let date = new Date().toDateString()
         return(
             <div>
-                <Switch>
-                    <Route exact path='/search' render={routerProps => <FoodSearch {...routerProps} addFoodToDiary={this.addFoodToDiary}/>}/>
-                    <Route exact path='/profile' render={routerProps => <DiaryPage {...routerProps} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>}/>
-                    <Route exact path='/nutrition' render={routerProps => <NutritionalBreakdown {...routerProps}/>}/>
-                </Switch>
+                {/* <DiaryPage nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
+                {this.state.show === 'search' && <FoodSearch addFoodToDiary={this.addFoodToDiary}/>}
+                {this.state.show === 'nutrition' && <NutritionalBreakdown />} */}
+                {this.renderComponent()}
             </div>
         )
     }
 }
 
 export default DiaryContainer
+
+// <Switch>
+//     <Route exact path='/search' render={routerProps => <FoodSearch {...routerProps} addFoodToDiary={this.addFoodToDiary}/>}/>
+//     {/* <Route path='/profile' render={routerProps => <DiaryPage {...routerProps} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>}/> */}
+//     <Route exact path='/nutrition' render={routerProps => <NutritionalBreakdown {...routerProps}/>}/>
+// </Switch>
 
 // can add foods to diary from search however does not pull diaries from database
 // click log food diary does post to diaries api
