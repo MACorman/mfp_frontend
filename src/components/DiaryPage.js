@@ -6,9 +6,9 @@ import CalorieCalc from '../components/CalorieCalc'
 
 class DiaryPage extends React.Component {
 
-    nutritionButtonHandler = () => {
-        this.props.history.push('/nutrition')
-    }
+    // nutritionButtonHandler = () => {
+    //     // this.props.history.push('/nutrition')
+    // }
     render() {
         let date = new Date().toDateString()
         return (
@@ -25,7 +25,7 @@ class DiaryPage extends React.Component {
                 {this.props.dinner.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
                 <button name='dinner' onClick={this.props.mealButtonHandler}>Add Dinner</button>
                 <br/>
-                <button onClick={this.nutritionButtonHandler}>See Daily Nutritional Info</button>
+                <button onClick={this.props.nutritionButtonHandler}>See Daily Nutritional Info</button>
                 <button>Log Food Diary</button>
             </div>
         )

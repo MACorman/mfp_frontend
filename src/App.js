@@ -42,7 +42,7 @@ class App extends React.Component {
           <Route exact path='/' render={routerProps => <LoginSignUp 
             {...routerProps} 
             login={this.login}/>}/> 
-          <Route exact path='/profile' render={routerProps => <UserContainer 
+          <Route path='/profile' render={routerProps => <UserContainer 
             {...routerProps}
             currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}
             logout={this.logout} 
