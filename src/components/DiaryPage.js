@@ -9,6 +9,12 @@ class DiaryPage extends React.Component {
     // nutritionButtonHandler = () => {
     //     // this.props.history.push('/nutrition')
     // }
+    logHandler = () => {
+        let date = new Date().toISOString().slice(0, 10)
+        this.props.logButtonHandler(date)
+    }
+
+
     render() {
         let date = new Date().toDateString()
         return (
@@ -26,7 +32,7 @@ class DiaryPage extends React.Component {
                 <button name='dinner' onClick={this.props.mealButtonHandler}>Add Dinner</button>
                 <br/>
                 <button onClick={this.props.nutritionButtonHandler}>See Daily Nutritional Info</button>
-                <button>Log Food Diary</button>
+                <button onClick={this.logHandler}>Log Food Diary</button>
             </div>
         )
     }
