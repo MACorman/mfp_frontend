@@ -69,8 +69,30 @@ class DiaryContainer extends React.Component {
 
     }
 
-    logButtonHandler = () => {
+    logButtonHandler = (date) => {
+        //create diary X
+        //create food
+        //create food diary
 
+        fetch('http://localhost:3000/diaries', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                user_id: parseInt(this.props.currentUser.id),
+                date: date
+            })
+        })
+        .then(resp => resp.json())
+        .then(diary => {
+            //concat b, l, and d
+            //make unique
+            //iterate over array and create a post for each
+            //in back end need to do find or create by
+            console.log(diary)
+        })
     } 
 
     backButton = () => {
@@ -89,7 +111,7 @@ class DiaryContainer extends React.Component {
             case 'nutrition':
                 return <NutritionalBreakdown backButton={this.backButton} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
             default: 
-                return <DiaryPage nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
+                return <DiaryPage logButtonHandler={this.logButtonHandler} nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
         }
     }
 

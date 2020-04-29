@@ -10,7 +10,7 @@ class NutritionalBreakdown extends React.Component {
     totalCal = () => {
         if(this.state.foods.length) {
             let calArr = this.state.foods.map(food => food.data.calories)
-            return calArr.reduce((a, b) => a + b).toFixed(2)
+            return calArr.reduce((a, b) => a + b)
         } else {
             return 0
         }
@@ -147,22 +147,22 @@ class NutritionalBreakdown extends React.Component {
         return (
             <div>
                 <button onClick={this.props.backButton}>Back</button>
-                <div>Nutritional breakdown</div>
-                <p>Total Cal: {this.totalCal()}</p>
-                <p>Total Carbs: {this.totalCarbs()}g</p>
-                <p>Total Fat: {this.totalFat()}g</p>
-                <p>Total Protein: {this.totalProtein()}g</p>
-                <p>Total Cholesterol: {this.totalCholest()}mg</p>
-                <p>Total Calcium: {this.totalCalcium()}mg</p>
-                <p>Total Monosaturated Fat: {this.totalMonoSat()}g</p>
-                <p>Total Polyunsaturated Fat: {this.totalPolyUnSat()}g</p>
-                <p>Total Saturated Fat: {this.totalSatFat()}g</p>
-                <p>Total Iron: {this.totalFe()}mg</p>
-                <p>Total Fiber: {this.totalFiber()}g</p>
-                <p>Total Potassium: {this.totalK()}mg</p>
-                <p>Total Magnesium: {this.totalMg()}mg</p>
-                <p>Total Sodium: {this.totalNa()}mg</p>
-                <p>Total Sugars: {this.totalSugar()}g</p>
+                <h3>Nutritional breakdown</h3>
+                <p>Total Cal: {this.totalCal()}/2000</p>
+                <p>Total Carbs: {this.totalCarbs()}/225g</p>
+                <p>Total Fat: {this.totalFat()}/67g</p>
+                <p>Total Protein: {this.totalProtein()}/125g</p>
+                <p>Total Cholesterol: {this.totalCholest()}/300mg</p>
+                <p>Total Calcium: {this.totalCalcium()}/2,000mg</p>
+                <p>Total Monosaturated Fat: {this.totalMonoSat()}/0g</p>
+                <p>Total Polyunsaturated Fat: {this.totalPolyUnSat()}/0g</p>
+                <p>Total Saturated Fat: {this.totalSatFat()}/20g</p>
+                <p>Total Iron: {this.totalFe()}/10mg</p>
+                <p>Total Fiber: {this.totalFiber()}/25g</p>
+                <p>Total Potassium: {this.totalK()}/4,700mg</p>
+                <p>Total Magnesium: {this.totalMg()}/310mg</p>
+                <p>Total Sodium: {this.totalNa()}/2,300mg</p>
+                <p>Total Sugars: {this.totalSugar()}/67g</p>
             </div>
 
         )
