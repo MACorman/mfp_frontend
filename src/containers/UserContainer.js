@@ -11,7 +11,7 @@ class UserContainer extends React.Component {
             <div>
                 <p>{`Welcome ${this.props.currentUser.name}!`}</p>
                 <DiaryContainer currentUser={this.props.currentUser} history={this.props.history} location={this.props.location} match={this.props.match}/>
-                <WeightContainer />
+                <WeightContainer currentUser={this.props.currentUser}/>
                 <Logout logout={this.props.logout}/>
             </div>
         )

@@ -87,11 +87,44 @@ class DiaryContainer extends React.Component {
         })
         .then(resp => resp.json())
         .then(diary => {
-            //concat b, l, and d
-            //make unique
-            //iterate over array and create a post for each
+            //concat b, l, and d X
+            //make unique X
+            //iterate over array and create a post for each X
             //in back end need to do find or create by
-            console.log(diary)
+            let foodsArr = this.state.breakfast.concat(this.state.lunch).concat(this.state.dinner)
+            // console.log(foodsArr)
+            let uniqueFoodName = []
+            let unique = []
+            foodsArr.forEach(food => {
+                if(!uniqueFoodName.includes(food.name)) {
+                    uniqueFoodName.push(food.name)
+                    unique.push(food)
+                }
+            })
+            // console.log("unique foods: ", uniqueFoodName, unique)
+            unique.forEach(food => {
+                fetch('http://localhost:3000/foods', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: food.name,
+                        calories: food.data.calories,
+                        carbs: food.data.totalNutrients.CHOCDF.quantity,
+                        fat: food.data.totalNutrients.FAT.quantity,
+                        protein: food.data.totalNutrients.PROCNT.quantity
+                    })
+                })
+                .then(resp => resp.json())
+                .then(food => {
+                    //create a food diary for each
+                    //if this.state.break includes food create fooddiary with food_id, diary_id and category
+                    console.log(food)
+                })
+            })
+
         })
     } 
 
