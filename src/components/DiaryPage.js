@@ -12,6 +12,7 @@ class DiaryPage extends React.Component {
     logHandler = () => {
         let date = new Date().toISOString().slice(0, 10)
         this.props.logButtonHandler(date)
+        this.btn.setAttribute("disabled", "disabled");
     }
 
 
@@ -32,7 +33,7 @@ class DiaryPage extends React.Component {
                 <button name='dinner' onClick={this.props.mealButtonHandler}>Add Dinner</button>
                 <br/>
                 <button onClick={this.props.nutritionButtonHandler}>See Daily Nutritional Info</button>
-                <button onClick={this.logHandler}>Log Food Diary</button>
+                <button ref={btn => { this.btn = btn }} onClick={this.logHandler}>Log Food Diary</button>
             </div>
         )
     }
