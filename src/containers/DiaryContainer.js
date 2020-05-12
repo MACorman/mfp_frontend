@@ -119,9 +119,62 @@ class DiaryContainer extends React.Component {
                 })
                 .then(resp => resp.json())
                 .then(food => {
-                    //create a food diary for each
-                    //if this.state.break includes food create fooddiary with food_id, diary_id and category
-                    console.log(food)
+                    let breakfastFoodNames = this.state.breakfast.map(food => food.name)
+                    
+                    if(breakfastFoodNames.includes(food.name)) {
+                        fetch('http://localhost:3000/food_diaries', {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json"
+                            },
+                            body: JSON.stringify({
+                                food_id: food.id,
+                                diary_id: diary.id,
+                                category: "breakfast"
+                            })
+                        })
+                        .then(resp => resp.json())
+                        .then(console.log)
+                    }
+
+                    let lunchFoodNames = this.state.lunch.map(food => food.name)
+                    
+                    if(lunchFoodNames.includes(food.name)) {
+                        fetch('http://localhost:3000/food_diaries', {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json"
+                            },
+                            body: JSON.stringify({
+                                food_id: food.id,
+                                diary_id: diary.id,
+                                category: "lunch"
+                            })
+                        })
+                        .then(resp => resp.json())
+                        .then(console.log)
+                    }
+
+                    let dinnerFoodNames = this.state.dinner.map(food => food.name)
+                    
+                    if(dinnerFoodNames.includes(food.name)) {
+                        fetch('http://localhost:3000/food_diaries', {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json"
+                            },
+                            body: JSON.stringify({
+                                food_id: food.id,
+                                diary_id: diary.id,
+                                category: "dinner"
+                            })
+                        })
+                        .then(resp => resp.json())
+                        .then(console.log)
+                    }
                 })
             })
 

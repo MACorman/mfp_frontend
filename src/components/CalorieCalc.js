@@ -27,7 +27,7 @@ class CalorieCalc extends React.Component {
     totalDinnerIntake = () => {
         let totalDinnerCal 
         if(this.props.dinner.length) {
-            let dinnerCalArr = this.props.breakfast.map(d => d.data.calories)
+            let dinnerCalArr = this.props.dinner.map(d => d.data.calories)
             totalDinnerCal = parseInt(dinnerCalArr.reduce((a, b) => a + b))
         } else {
             totalDinnerCal = 0

@@ -12,6 +12,7 @@ class WeightForm extends React.Component {
         let date = new Date().toISOString().slice(0, 10)
         this.props.addWeight(weight, date)
         this.setState({input: ''})
+        this.btn.setAttribute("disabled", "disabled");
     }
 
     render() {
@@ -19,7 +20,7 @@ class WeightForm extends React.Component {
             <div>
                 <form onSubmit={this.weightHandler}>
                     <input onChange={(e) => this.setState({input: e.target.value})} type='text' placeholder="Enter Today's Weight" value={this.state.input}/>
-                    <input type='submit' />
+                    <input ref={btn => { this.btn = btn }} type='submit' />
                 </form>
             </div>
         )
