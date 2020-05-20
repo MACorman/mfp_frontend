@@ -34,6 +34,30 @@ class App extends React.Component {
     this.props.history.push('/')
   }
 
+  createNewUser = (user) => {
+    console.log("yip")
+    fetch('http://localhost:3000/users', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: user.username,
+        password: user.password
+      })
+    })
+    .then(resp => resp.json())
+    .then(user => {
+      let updatedUsers = [...this.state.users, user]
+      this.setState({users: updatedUsers})
+      let currentUser = user
+      this.setState({ currentUser }, console.log("inside init set state", this.state.currentUser))
+      sessionStorage.setItem("currentUser", JSON.stringify(currentUser))
+      this.props.history.push('/profile')
+    })
+  }
+
 
   render() {
     return (
@@ -41,7 +65,9 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={routerProps => <LoginSignUp 
             {...routerProps} 
-            login={this.login}/>}/> 
+            login={this.login}
+            createNewUser={this.createNewUser}
+            />}/> 
           <Route path='/profile' render={routerProps => <UserContainer 
             {...routerProps}
             currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}

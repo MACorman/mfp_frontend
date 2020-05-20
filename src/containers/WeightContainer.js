@@ -10,7 +10,10 @@ class WeightContainer extends React.Component {
     componentDidMount() {
         fetch('http://localhost:3000/weights')
         .then(resp => resp.json())
-        .then(weights => this.setState({ weights }))
+        .then(weights => {
+            let userWeights = weights.filter(w => w.user_id === this.props.currentUser.id)
+            this.setState({weights: userWeights})
+        })
     }
 
     addWeight = (weight, date) => {
