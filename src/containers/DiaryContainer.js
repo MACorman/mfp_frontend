@@ -15,7 +15,17 @@ class DiaryContainer extends React.Component {
         category: null,
         breakfast: [],
         lunch: [],
-        dinner: []
+        dinner: [],
+        diaries: []
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:3000/diaries')
+        .then(resp => resp.json())
+        .then(diaries => {
+            let userDiaries = diaries.filter(d => d.user_id == this.props.currentUser.id)
+            this.setState({ diaries: userDiaries })
+        })
     }
 
     mealButtonHandler = (e) => {
@@ -197,7 +207,7 @@ class DiaryContainer extends React.Component {
             case 'nutrition':
                 return <NutritionalBreakdown backButton={this.backButton} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
             default: 
-                return <DiaryPage logButtonHandler={this.logButtonHandler} nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
+                return <DiaryPage diaries={this.state.diaries} logButtonHandler={this.logButtonHandler} nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
         }
     }
 
