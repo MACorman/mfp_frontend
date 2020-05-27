@@ -13,7 +13,9 @@ class DiaryPage extends React.Component {
     }
 
     componentDidMount() {
-        this.loadDiary()
+        let diary = this.props.diaries.find(d => d.date === new Date().toISOString().slice(0, 10))
+        console.log(this.props.diaries)
+        diary && this.loadDiary(diary)
     }
 
     // nutritionButtonHandler = () => {
@@ -25,10 +27,10 @@ class DiaryPage extends React.Component {
         this.btn.setAttribute("disabled", "disabled");
     }
 
-    loadDiary = () => {
-        let diary = this.props.diaries.find(d => d.date === new Date().toISOString().slice(0, 10))
-        let foods = diary.map(d => d.foods)
-        let food_diaries = diary.map(d => d.food_diaries)
+    loadDiary = (diary) => {
+        // let diary = this.props.diaries.find(d => d.date === new Date().toISOString().slice(0, 10))
+        let foods = diary.foods
+        let food_diaries = diary.food_diaries
         let breakfast = food_diaries.filter(fd => fd.category === "breakfast")
         let breakfastIds = breakfast.map(fd => fd.food_id)
         let lunch = food_diaries.filter(fd => fd.category === "lunch")
@@ -36,8 +38,8 @@ class DiaryPage extends React.Component {
         let dinner = food_diaries.filter(fd => fd.category === "dinner")
         // let dinnerIds = dinner.map(fd => fd.food_id)
         
-
-       foods.forEach(food => {
+       foods.map(food => {
+           console.log(food)
            if (breakfastIds.includes(food.id)) {
                this.setState({breakfast: [...this.state.breakfast, food]})
            }
@@ -59,12 +61,15 @@ class DiaryPage extends React.Component {
 
     render() {
         let date = new Date().toDateString()
+        let diary = this.props.diaries.find(d => d.date === new Date().toISOString().slice(0, 10))
+        diary && console.log("hmmm does it work", diary.foods)
+        // console.log(this.state)
         return (
             <div>
                 <div>{date}</div>
-                {   this.props.diaries.map(d => d.date).includes(new Date().toISOString().slice(0, 10))
+                {   this.state.breakfast.length > 0
                 ?
-                    <div>yeet</div>
+                    <div>{this.state.breakfast.map(f => f.name)}</div>
                 :
                     <div>
                         <CalorieCalc breakfast={this.props.breakfast} lunch={this.props.lunch} dinner={this.props.dinner}/>
