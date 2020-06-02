@@ -2,6 +2,8 @@ import React from 'react';
 import LoginSignUp from './components/LoginSignUp';
 import UserContainer from './containers/UserContainer';
 import { Switch, Route, withRouter } from 'react-router-dom'
+import 'semantic-ui-css/semantic.min.css'
+import './App.css'
 
 class App extends React.Component {
   
@@ -61,7 +63,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='App'>
         <Switch>
           <Route exact path='/' render={routerProps => <LoginSignUp 
             {...routerProps} 

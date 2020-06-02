@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Input } from 'semantic-ui-react'
 
 class LoginSignUp extends React.Component {
 
@@ -43,21 +44,34 @@ class LoginSignUp extends React.Component {
                 {
                     this.state.signUp 
                     ?
-                    <form onSubmit={this.createAccount}>
-                        <input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-                        <input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-                        <input type='password' placeholder='password confirmation' value={this.state.passwordConfirmation} onChange={(e) => this.setState({passwordConfirmation: e.target.value})}/>
-                        <input type='submit' value='Create Account'/>
+                    <form className='Form' onSubmit={this.createAccount}>
+                        <Input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
+                        <br/>
+                        <br/>
+                        <Input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+                        <br/>
+                        <br/>
+                        <Input type='password' placeholder='password confirmation' value={this.state.passwordConfirmation} onChange={(e) => this.setState({passwordConfirmation: e.target.value})}/>
+                        <br/>
+                        <br/>
+                        <Button  color='olive' type='submit'>Create Account</Button>
+                        
                     </form>
                     :
                     <div>
-                        <form onSubmit={this.submitHandler}>
-                            <input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-                            <input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-                            <input type='submit' value='Login'/>
+                        <form className='Form' onSubmit={this.submitHandler}>
+                            <Input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
+                            <br/>
+                            <br/>
+                            <Input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+                            <br/>
+                            <br/>
+                            <Button color='olive' type='submit'>Login</Button>
                         </form>
+                        <div className='Form'>
                         <p>Don't have an account yet?</p>
-                        <button onClick={this.signUpHandler}>Sign Up</button>
+                            <Button color='olive' onClick={this.signUpHandler}>Sign Up</Button>
+                        </div>
                     </div>
 
                 }
