@@ -40,41 +40,45 @@ class LoginSignUp extends React.Component {
     render() {
         return(
             <div>
-                <p>Welcome to MyFitnessPal!</p>
-                {
-                    this.state.signUp 
-                    ?
-                    <form className='Form' onSubmit={this.createAccount}>
-                        <Input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
-                        <br/>
-                        <br/>
-                        <Input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
-                        <br/>
-                        <br/>
-                        <Input type='password' placeholder='password confirmation' value={this.state.passwordConfirmation} onChange={(e) => this.setState({passwordConfirmation: e.target.value})}/>
-                        <br/>
-                        <br/>
-                        <Button  color='olive' type='submit'>Create Account</Button>
-                        
-                    </form>
-                    :
-                    <div>
-                        <form className='Form' onSubmit={this.submitHandler}>
+                <img id='background' src="mfp-bg-5.png" alt=''/>
+                <div className='Form'>
+                    <p id='welcome-title'>Welcome to MyFitnessPal!</p>
+                    {
+                        this.state.signUp 
+                        ?
+                        <form  onSubmit={this.createAccount}>
                             <Input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
                             <br/>
                             <br/>
                             <Input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
                             <br/>
                             <br/>
-                            <Button color='olive' type='submit'>Login</Button>
+                            <Input type='password' placeholder='password confirmation' value={this.state.passwordConfirmation} onChange={(e) => this.setState({passwordConfirmation: e.target.value})}/>
+                            <br/>
+                            <br/>
+                            <Button  color='olive' type='submit'>Create Account</Button>
+                            
                         </form>
-                        <div className='Form'>
-                        <p>Don't have an account yet?</p>
-                            <Button color='olive' onClick={this.signUpHandler}>Sign Up</Button>
+                        :
+                        <div >
+                            <form onSubmit={this.submitHandler}>
+                                <Input type='text' placeholder='username' value={this.state.username} onChange={(e) => this.setState({username: e.target.value})}/>
+                                <br/>
+                                <br/>
+                                <Input type='password' placeholder='password' value={this.state.password} onChange={(e) => this.setState({password: e.target.value})}/>
+                                <br/>
+                                <br/>
+                                <Button color='olive' type='submit'>Login</Button>
+                            </form>
+                            <div>
+                            <p>Don't have an account yet?</p>
+                                <Button color='olive' onClick={this.signUpHandler}>Sign Up</Button>
+                            </div>
                         </div>
-                    </div>
 
-                }
+                    }
+
+                </div>
             </div>
         )
     }
