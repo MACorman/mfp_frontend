@@ -3,6 +3,7 @@ import FoodSearch from '../components/FoodSearch'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import FoodDiaryCard from '../components/FoodDiaryCard'
 import CalorieCalc from '../components/CalorieCalc'
+import { Button, Input } from 'semantic-ui-react'
 
 class DiaryPage extends React.Component {
 
@@ -24,7 +25,8 @@ class DiaryPage extends React.Component {
     logHandler = () => {
         let date = new Date().toISOString().slice(0, 10)
         this.props.logButtonHandler(date)
-        this.btn.setAttribute("disabled", "disabled");
+        // this.btn.setAttribute("disabled", "disabled");
+        // figure out how to disable buttons in semantic ui
     }
 
     loadDiary = (diary) => {
@@ -66,7 +68,7 @@ class DiaryPage extends React.Component {
         // console.log(this.state)
         return (
             <div>
-                <div>{date}</div>
+                {/* <div>{date}</div> */}
                 {   this.state.breakfast.length > 0
                 ?
                     <div>{this.state.breakfast.map(f => f.name)}</div>
@@ -75,16 +77,16 @@ class DiaryPage extends React.Component {
                         <CalorieCalc breakfast={this.props.breakfast} lunch={this.props.lunch} dinner={this.props.dinner}/>
                         <h4>Breakfast</h4>
                         {this.props.breakfast.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <button name='breakfast' onClick={this.props.mealButtonHandler}>Add Breakfast</button>
+                        <Button color='olive' name='breakfast' onClick={this.props.mealButtonHandler}>Add Breakfast</Button>
                         <h4>Lunch</h4>
                         {this.props.lunch.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <button  name='lunch' onClick={this.props.mealButtonHandler}>Add Lunch</button>
+                        <Button  color='olive' name='lunch' onClick={this.props.mealButtonHandler}>Add Lunch</Button>
                         <h4>Dinner</h4>
                         {this.props.dinner.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <button name='dinner' onClick={this.props.mealButtonHandler}>Add Dinner</button>
+                        <Button color='olive' name='dinner' onClick={this.props.mealButtonHandler}>Add Dinner</Button>
                         <br/>
-                        <button onClick={this.props.nutritionButtonHandler}>See Daily Nutritional Info</button>
-                        <button ref={btn => { this.btn = btn }} onClick={this.logHandler}>Log Food Diary</button>
+                        <Button color='olive' onClick={this.props.nutritionButtonHandler}>See Daily Nutritional Info</Button>
+                        <Button color='olive' onClick={this.logHandler}>Log Food Diary</Button>
                     </div>
                 }
             </div>

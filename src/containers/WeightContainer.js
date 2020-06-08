@@ -38,7 +38,7 @@ class WeightContainer extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className='weight_container'>
                 <p>Weight Container</p>
                 <WeightForm addWeight={this.addWeight} />
                 <WeightGraph weights={this.state.weights} />

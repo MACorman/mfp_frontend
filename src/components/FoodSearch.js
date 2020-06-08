@@ -1,5 +1,6 @@
 import React from 'react' 
 import FoodResultCard from './FoodResultCard'
+import {Button, Input} from 'semantic-ui-react'
 
 
 class FoodSearch extends React.Component {
@@ -32,8 +33,8 @@ class FoodSearch extends React.Component {
         return(
             <div>
                 <form onSubmit={this.submitHandler}>
-                    <input type="text" placeholder="Search Food" value={this.state.foodInput} onChange={(e) => this.setState({foodInput: e.target.value})}/>
-                    <input type="submit" value="Search" />
+                    <Input type="text" placeholder="Search Food" value={this.state.foodInput} onChange={(e) => this.setState({foodInput: e.target.value})}/>
+                    <Button color='olive' type="submit">Search</Button>
                 </form>
                 {
                     this.state.results

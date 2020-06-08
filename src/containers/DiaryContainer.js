@@ -5,6 +5,7 @@ import FoodDiaryCard from '../components/FoodDiaryCard'
 import CalorieCalc from '../components/CalorieCalc'
 import DiaryPage from '../components/DiaryPage'
 import NutritionalBreakdown from '../components/NutritionalBreakdown'
+import { Button, Input } from 'semantic-ui-react'
 
 
 class DiaryContainer extends React.Component {
@@ -214,7 +215,7 @@ class DiaryContainer extends React.Component {
     render() {
         // let date = new Date().toDateString()
         return(
-            <div>
+            <div className='diary_container'>
                 {/* <DiaryPage nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
                 {this.state.show === 'search' && <FoodSearch addFoodToDiary={this.addFoodToDiary}/>}
                 {this.state.show === 'nutrition' && <NutritionalBreakdown />} */}

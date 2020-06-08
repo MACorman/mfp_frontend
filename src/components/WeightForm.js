@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Input } from 'semantic-ui-react'
 
 class WeightForm extends React.Component {
 
@@ -12,15 +13,16 @@ class WeightForm extends React.Component {
         let date = new Date().toISOString().slice(0, 10)
         this.props.addWeight(weight, date)
         this.setState({input: ''})
-        this.btn.setAttribute("disabled", "disabled");
+        // this.btn.setAttribute("disabled", "disabled");
+        // need to figure out how to disable button with semantic ui
     }
 
     render() {
         return(
-            <div>
+            <div className='weight_form'>
                 <form onSubmit={this.weightHandler}>
-                    <input onChange={(e) => this.setState({input: e.target.value})} type='text' placeholder="Enter Today's Weight" value={this.state.input}/>
-                    <input ref={btn => { this.btn = btn }} type='submit' />
+                    <Input onChange={(e) => this.setState({input: e.target.value})} type='text' placeholder="Enter Today's Weight" value={this.state.input}/>
+                    <Button color='olive'>Log Weight</Button>
                 </form>
             </div>
         )
