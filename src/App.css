@@ -33,4 +33,39 @@ html, body {
   color: white;
 }
 
+.weight_container {
+  font-size: 1.25em;
+  text-align: center;
+}
 
+.graph {
+  display: block;
+  margin: 0 auto;
+}
+
+.logout {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-align: center;
+}
+
+.weight_form {
+  padding-bottom: 20px;
+}
+
+.welcome {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.75em;
+  padding-top: 30px;
+}
+
+.diary_container {
+  font-size: 1.25em;
+  
+}
+
+.date {
+  text-align: center;
+  font-size: 1.25em;
+}

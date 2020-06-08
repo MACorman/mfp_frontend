@@ -1,6 +1,6 @@
 import React from 'react' 
 import Select from "react-dropdown-select"
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, Button } from 'semantic-ui-react'
 
 const options = [
     {
@@ -93,7 +93,7 @@ class FoodResultCard extends React.Component {
                     options={options}
                     onChange={this.selectHandler}
                 />
-                <button onClick={this.buttonHandler}>Add to Food Diary</button>
+                <Button color='olive' onClick={this.buttonHandler}>Add to Food Diary</Button>
                 <br/>
                 <br/>
             </div>

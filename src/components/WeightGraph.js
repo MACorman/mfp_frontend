@@ -21,32 +21,34 @@ class WeightGraph extends React.Component {
         return(
             <div>
                 <p>Weight Graph</p>
-                <XYPlot height={300} width = {300} xType='ordinal' yDomain={[40, 100]}>
-                    <HorizontalGridLines style={{ stroke: "#e0e0e0"}}/>
-                    <VerticalGridLines style={{ stroke: "#e0e0e0"}}/>
-                    <XAxis />
-                    <YAxis />
-                    <LineMarkSeries style={{fill: 'none'}} markStyle={{fill: 'solid'}} data={this.graphData()}/>
-                    <ChartLabel 
-                        text="Date"
-                        className="alt-x-label"
-                        includeMargin={false}
-                        xPercent={0.025}
-                        yPercent={1.01}
-                    />
+                
+                    <XYPlot className='graph' height={400} width = {400} xType='ordinal' yDomain={[40, 100]}>
+                        <HorizontalGridLines style={{ stroke: "#e0e0e0"}}/>
+                        <VerticalGridLines style={{ stroke: "#e0e0e0"}}/>
+                        <XAxis />
+                        <YAxis />
+                        <LineMarkSeries style={{fill: 'none'}} markStyle={{fill: 'solid'}} data={this.graphData()}/>
+                        <ChartLabel 
+                            text="Date"
+                            className="alt-x-label"
+                            includeMargin={false}
+                            xPercent={0.025}
+                            yPercent={1.01}
+                        />
 
-                    <ChartLabel 
-                        text="Weight"
-                        className="alt-y-label"
-                        includeMargin={false}
-                        xPercent={0.06}
-                        yPercent={0.06}
-                        style={{
-                        transform: 'rotate(-90)',
-                        textAnchor: 'end'
-                        }}
-                    />
-                </XYPlot>
+                        <ChartLabel 
+                            text="Weight"
+                            className="alt-y-label"
+                            includeMargin={false}
+                            xPercent={0.06}
+                            yPercent={0.06}
+                            style={{
+                            transform: 'rotate(-90)',
+                            textAnchor: 'end'
+                            }}
+                        />
+                    </XYPlot>
+               
             </div>
         )
     }

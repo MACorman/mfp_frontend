@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from 'semantic-ui-react'
 
 
 class NutritionalBreakdown extends React.Component {
@@ -146,7 +147,7 @@ class NutritionalBreakdown extends React.Component {
         console.log(this.state.foods)
         return (
             <div>
-                <button onClick={this.props.backButton}>Back</button>
+                <Button color='olive' onClick={this.props.backButton}>Back</Button>
                 <h3>Nutritional breakdown</h3>
                 <p>Total Cal: {this.totalCal()}/2000</p>
                 <p>Total Carbs: {this.totalCarbs()}/225g</p>

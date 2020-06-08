@@ -3,6 +3,7 @@ import LoginSignUp from './components/LoginSignUp';
 import UserContainer from './containers/UserContainer';
 import { Switch, Route, withRouter } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
+import '../node_modules/react-vis/dist/style.css';
 import './App.css'
 
 class App extends React.Component {
