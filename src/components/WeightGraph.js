@@ -22,7 +22,7 @@ class WeightGraph extends React.Component {
             <div>
                 <p>Weight Graph</p>
                 
-                    <XYPlot className='graph' height={400} width = {400} xType='ordinal' yDomain={[40, 100]}>
+                    <XYPlot className='graph' height={500} width = {500} xType='ordinal' yDomain={[40, 100]}>
                         <HorizontalGridLines style={{ stroke: "#e0e0e0"}}/>
                         <VerticalGridLines style={{ stroke: "#e0e0e0"}}/>
                         <XAxis />

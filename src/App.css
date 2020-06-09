@@ -36,6 +36,7 @@ html, body {
 .weight_container {
   font-size: 1.25em;
   text-align: center;
+  padding-top: 30px;
 }
 
 .graph {
@@ -56,16 +57,50 @@ html, body {
 .welcome {
   text-align: center;
   font-weight: 700;
-  font-size: 1.75em;
-  padding-top: 30px;
+  font-size: 2.25em;
+  color: white;
+  display: block;
+  padding-bottom: 10px;
 }
 
 .diary_container {
   font-size: 1.25em;
-  
+  padding-top: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
 .date {
   text-align: center;
   font-size: 1.25em;
+  color: white;
+  display: block;
+}
+
+.header {
+  /* background-color: #B5CC18; */
+  background-image: url("/mfp-bg-5.png");
+  opacity: 0.6;
+  padding: 40px;
+}
+
+.cal_calc {
+  text-align: center;
+}
+
+#nutrition_log_btns {
+  text-align: center;
+  padding-top: 60px;
+}
+
+.search_form {
+  padding-top: 30px;
+}
+
+.diary_page {
+  padding-top: 30px;
+}
+
+.hr {
+  border: 1px solid #e0e0e0;
 }

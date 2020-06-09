@@ -12,8 +12,11 @@ class UserContainer extends React.Component {
         let date = new Date().toDateString()
         return(
             <div>
-                <p className='welcome'>{`Welcome ${this.props.currentUser.name}!`}</p>
-                <p className='date'>{date}</p>
+                <div className='header'>
+                {/* <img id='background' src="mfp-bg-5.png" alt=''/> */}
+                    <span className='welcome'>{`Welcome ${this.props.currentUser.name}!`}</span>
+                    <span className='date'>{date}</span>
+                </div>
                 <Grid>
                     <Grid.Column width={8}>
                         <DiaryContainer currentUser={this.props.currentUser} history={this.props.history} location={this.props.location} match={this.props.match}/>
