@@ -42,7 +42,7 @@ class CalorieCalc extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className='cal_calc'>
                 <p>Calories Remaining</p>
                 <p>Goal: 2000 - Food: {this.totalIntake()} = Remaining: {2000 - this.totalIntake()}</p>
             </div>
