@@ -44,7 +44,14 @@ class CalorieCalc extends React.Component {
         return (
             <div className='cal_calc'>
                 <p>Calories Remaining</p>
-                <p>Goal: 2000 - Food: {this.totalIntake()} = Remaining: {2000 - this.totalIntake()}</p>
+                <span>Goal: 2000 - Food: {this.totalIntake()} = </span>
+                {
+                    2000 - this.totalIntake() < 0 
+                ?
+                    <span className='neg-calories'>Remaining: {2000 - this.totalIntake()}</span>
+                :
+                    <span>Remaining: {2000 - this.totalIntake()}</span>
+                }
             </div>
         ) 
     }

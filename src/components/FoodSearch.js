@@ -35,7 +35,7 @@ class FoodSearch extends React.Component {
                 <form className='search_form'onSubmit={this.submitHandler}>
                     <p>Search for a food to add to your diary:</p>
                     <Input type="text" placeholder="Search Food" value={this.state.foodInput} onChange={(e) => this.setState({foodInput: e.target.value})}/>
-                    <Button color='olive' type="submit">Search</Button>
+                    <Button id='food-search-button' color='olive' type="submit">Search</Button>
                 </form>
                 {
                     this.state.results
