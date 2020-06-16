@@ -22,7 +22,7 @@ class WeightForm extends React.Component {
             <div className='weight_form'>
                 <form onSubmit={this.weightHandler}>
                     <Input onChange={(e) => this.setState({input: e.target.value})} type='text' placeholder="Enter Today's Weight" value={this.state.input}/>
-                    <Button color='olive'>Log Weight</Button>
+                    <Button id='weight-button' color='olive'>Log Weight</Button>
                 </form>
             </div>
         )

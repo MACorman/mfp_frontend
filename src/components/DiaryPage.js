@@ -75,22 +75,22 @@ class DiaryPage extends React.Component {
                 :
                     <div>
                         {/* <CalorieCalc breakfast={this.props.breakfast} lunch={this.props.lunch} dinner={this.props.dinner}/> */}
-                        <h4>Breakfast</h4>
+                        <div className='meal-title'>Breakfast</div>
                         <hr className='hr'/>
                         {this.props.breakfast.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <Button color='olive' name='breakfast' onClick={this.props.mealButtonHandler}>Add Breakfast</Button>
-                        <h4>Lunch</h4>
+                        <Button className='meal-button' color='olive' name='breakfast' onClick={this.props.mealButtonHandler}>Add Breakfast</Button>
+                        <div className='meal-title'>Lunch</div>
                         <hr className='hr'/>
                         {this.props.lunch.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <Button  color='olive' name='lunch' onClick={this.props.mealButtonHandler}>Add Lunch</Button>
-                        <h4>Dinner</h4>
+                        <Button className='meal-button' color='olive' name='lunch' onClick={this.props.mealButtonHandler}>Add Lunch</Button>
+                        <div className='meal-title' >Dinner</div>
                         <hr className='hr'/>
                         {this.props.dinner.map(food => <FoodDiaryCard key={food.data.uri} {...food}/>)}
-                        <Button color='olive' name='dinner' onClick={this.props.mealButtonHandler}>Add Dinner</Button>
+                        <Button className='meal-button' color='olive' name='dinner' onClick={this.props.mealButtonHandler}>Add Dinner</Button>
                         <br/>
                         <div id='nutrition_log_btns'>
-                            <Button color='olive' onClick={this.props.nutritionButtonHandler}>See Daily Nutritional Info</Button>
-                            <Button color='olive' onClick={this.logHandler}>Log Food Diary</Button>
+                            <Button id='nutrition-button' color='olive' onClick={this.props.nutritionButtonHandler}>See Daily Nutritional Info</Button>
+                            <Button id='log-button' color='olive' onClick={this.logHandler}>Log Food Diary</Button>
                         </div>
                     </div>
                 }

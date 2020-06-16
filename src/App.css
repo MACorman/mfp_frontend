@@ -95,6 +95,7 @@ html, body {
 
 .search_form {
   padding-top: 30px;
+  padding-bottom: 15px;
 }
 
 .diary_page {
@@ -103,4 +104,54 @@ html, body {
 
 .hr {
   border: 1px solid #e0e0e0;
+}
+
+/* #food-search-input {
+  
+} */
+
+#food-search-button {
+  margin-left: 10px;
+  
+}
+
+#weight-button {
+  margin-left: 10px;
+}
+
+#nutrition-button {
+  margin-right: 10px;
+}
+
+#log-button {
+  margin-right: 10px;
+}
+
+.servings-dropdown {
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.food-results-card {
+  padding-bottom: 20px;
+}
+
+.food-name {
+  font-weight: 800;
+  font-size: 1em;
+  
+}
+
+.meal-title {
+  font-weight: 800;
+  font-size: 1em;
+  padding-top: 30px;
+}
+
+/* .meal-button {
+  margin-bottom: 20px;
+} */
+
+.neg-calories {
+  color: red;
 }

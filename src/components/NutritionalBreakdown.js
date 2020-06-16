@@ -1,5 +1,6 @@
 import React from 'react'
 import {Button} from 'semantic-ui-react'
+import {RadialChart} from 'react-vis'
 
 
 class NutritionalBreakdown extends React.Component {
@@ -145,10 +146,24 @@ class NutritionalBreakdown extends React.Component {
 
     render() {
         console.log(this.state.foods)
+
+        let macros = [
+            {label: 'Carbs', subLabel: `${(parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
+            {label: 'Protein', subLabel: `${(parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
+            {label: 'Fat', subLabel: `${(parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}
+        ]
+        console.log("carbss", (parseInt(this.totalCarbs()) + parseInt(this.totalFat()) + parseInt(this.totalProtein())))
         return (
             <div>
                 <Button color='olive' onClick={this.props.backButton}>Back</Button>
                 <h3>Nutritional breakdown</h3>
+                <RadialChart
+                    data={macros}
+                    width={300}
+                    height={300} 
+                    showLabels={true}
+                    
+                />
                 <p>Total Cal: {this.totalCal()}/2000</p>
                 <p>Total Carbs: {this.totalCarbs()}/225g</p>
                 <p>Total Fat: {this.totalFat()}/67g</p>
@@ -164,6 +179,7 @@ class NutritionalBreakdown extends React.Component {
                 <p>Total Magnesium: {this.totalMg()}/310mg</p>
                 <p>Total Sodium: {this.totalNa()}/2,300mg</p>
                 <p>Total Sugars: {this.totalSugar()}/67g</p>
+                
             </div>
 
         )
