@@ -1,5 +1,5 @@
 import React from 'react'
-import {XYPlot, LineMarkSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, ChartLabel } from 'react-vis'
+import {XYPlot, LineSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, ChartLabel } from 'react-vis'
 
 class WeightGraph extends React.Component {
 
@@ -20,14 +20,14 @@ class WeightGraph extends React.Component {
         console.log("weight data: ", this.graphData())
         return(
             <div>
-                <p>Weight Graph</p>
+                <p>Weight Progress Over Time</p>
                 
                     <XYPlot className='graph' height={500} width = {500} xType='ordinal' yDomain={[40, 100]}>
                         <HorizontalGridLines style={{ stroke: "#e0e0e0"}}/>
                         <VerticalGridLines style={{ stroke: "#e0e0e0"}}/>
                         <XAxis />
                         <YAxis />
-                        <LineMarkSeries style={{fill: 'none'}} markStyle={{fill: 'solid'}} data={this.graphData()}/>
+                        <LineSeries  data={this.graphData()}/>
                         <ChartLabel 
                             text="Date"
                             className="alt-x-label"
@@ -37,7 +37,7 @@ class WeightGraph extends React.Component {
                         />
 
                         <ChartLabel 
-                            text="Weight"
+                            text="Weight (kg)"
                             className="alt-y-label"
                             includeMargin={false}
                             xPercent={0.06}

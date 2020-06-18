@@ -155,3 +155,17 @@ html, body {
 .neg-calories {
   color: red;
 }
+
+.nutrient {
+  float: right;
+}
+
+.pie-chart {
+  display: block;
+  margin: 0 auto;
+}
+
+.nutrition-details {
+  padding-top: 14px;
+
+}
