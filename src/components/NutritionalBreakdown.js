@@ -148,37 +148,60 @@ class NutritionalBreakdown extends React.Component {
         console.log(this.state.foods)
 
         let macros = [
-            {label: 'Carbs', subLabel: `${(parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
-            {label: 'Protein', subLabel: `${(parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
-            {label: 'Fat', subLabel: `${(parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}
+            {color: '#e3991b', label: 'Carbs', subLabel: `${(parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
+            {color: '#c9e31b', label: 'Protein', subLabel: `${(parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
+            {color: '#65e31b', label: 'Fat', subLabel: `${(parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}
         ]
         console.log("carbss", (parseInt(this.totalCarbs()) + parseInt(this.totalFat()) + parseInt(this.totalProtein())))
         return (
             <div>
                 <Button color='olive' onClick={this.props.backButton}>Back</Button>
-                <h3>Nutritional breakdown</h3>
-                <RadialChart
-                    data={macros}
-                    width={300}
-                    height={300} 
-                    showLabels={true}
-                    
-                />
-                <p>Total Cal: {this.totalCal()}/2000</p>
-                <p>Total Carbs: {this.totalCarbs()}/225g</p>
-                <p>Total Fat: {this.totalFat()}/67g</p>
-                <p>Total Protein: {this.totalProtein()}/125g</p>
-                <p>Total Cholesterol: {this.totalCholest()}/300mg</p>
-                <p>Total Calcium: {this.totalCalcium()}/2,000mg</p>
-                <p>Total Monosaturated Fat: {this.totalMonoSat()}/0g</p>
-                <p>Total Polyunsaturated Fat: {this.totalPolyUnSat()}/0g</p>
-                <p>Total Saturated Fat: {this.totalSatFat()}/20g</p>
-                <p>Total Iron: {this.totalFe()}/10mg</p>
-                <p>Total Fiber: {this.totalFiber()}/25g</p>
-                <p>Total Potassium: {this.totalK()}/4,700mg</p>
-                <p>Total Magnesium: {this.totalMg()}/310mg</p>
-                <p>Total Sodium: {this.totalNa()}/2,300mg</p>
-                <p>Total Sugars: {this.totalSugar()}/67g</p>
+                <div className='nutrition-details'>
+                    <p>Nutritional breakdown</p>
+                    <RadialChart className='pie-chart'
+                        data={macros}
+                        width={300}
+                        height={300} 
+                        showLabels={true}
+                        labelsStyle={{
+                            fontSize: 14,
+                            letterSpacing: 0.4,
+                            
+                        }}
+                        colorType={'literal'}
+                        
+                    />
+                    <span>Total Cal:</span><span className='nutrient'> {this.totalCal()}/2000</span>
+                    <br/>
+                    <span>Total Carbs:</span><span className='nutrient'> {this.totalCarbs()}/225 g</span>
+                    <br/>
+                    <span>Total Fat:</span><span className='nutrient'> {this.totalFat()}/67 g</span>
+                    <br/>
+                    <span>Total Protein:</span><span className='nutrient'> {this.totalProtein()}/125 g</span>
+                    <br/>
+                    <span>Total Cholesterol:</span><span className='nutrient'> {this.totalCholest()}/300 mg</span>
+                    <br/>
+                    <span>Total Calcium:</span><span className='nutrient'> {this.totalCalcium()}/2,000 mg</span>
+                    <br/>
+                    <span>Total Monosaturated Fat:</span><span className='nutrient'> {this.totalMonoSat()}/0 g</span>
+                    <br/>
+                    <span>Total Polyunsaturated Fat:</span><span className='nutrient'> {this.totalPolyUnSat()}/0 g</span>
+                    <br/>
+                    <span>Total Saturated Fat:</span><span className='nutrient'> {this.totalSatFat()}/20 g</span>
+                    <br/>
+                    <span>Total Iron:</span><span className='nutrient'> {this.totalFe()}/10 mg</span>
+                    <br/>
+                    <span>Total Fiber:</span><span className='nutrient'> {this.totalFiber()}/25 g</span>
+                    <br/>
+                    <span>Total Potassium:</span><span className='nutrient'> {this.totalK()}/4,700 mg</span>
+                    <br/>
+                    <span>Total Magnesium:</span><span className='nutrient'> {this.totalMg()}/310 mg</span>
+                    <br/>
+                    <span>Total Sodium:</span><span className='nutrient'> {this.totalNa()}/2,300 mg</span>
+                    <br/>
+                    <span>Total Sugars:</span><span className='nutrient'> {this.totalSugar()}/67 g</span>
+
+                </div>
                 
             </div>
 
