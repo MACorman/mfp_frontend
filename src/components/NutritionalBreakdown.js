@@ -148,9 +148,9 @@ class NutritionalBreakdown extends React.Component {
         console.log(this.state.foods)
 
         let macros = [
-            {color: '#e3991b', label: 'Carbs', subLabel: `${(parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
-            {color: '#c9e31b', label: 'Protein', subLabel: `${(parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
-            {color: '#65e31b', label: 'Fat', subLabel: `${(parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}%`, angle: (parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}
+            {color: '#e3991b', label: 'Carbs', subLabel: `${((parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100).toFixed(0)}%`, angle: (parseInt(this.totalCarbs())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
+            {color: '#c9e31b', label: 'Protein', subLabel: `${((parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100).toFixed(0)}%`, angle: (parseInt(this.totalProtein())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}, 
+            {color: '#65e31b', label: 'Fat', subLabel: `${((parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100).toFixed(0)}%`, angle: (parseInt(this.totalFat())/(parseInt(this.totalProtein())+parseInt(this.totalCarbs())+parseInt(this.totalFat())))*100}
         ]
         console.log("carbss", (parseInt(this.totalCarbs()) + parseInt(this.totalFat()) + parseInt(this.totalProtein())))
         return (

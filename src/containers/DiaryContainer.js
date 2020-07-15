@@ -17,7 +17,8 @@ class DiaryContainer extends React.Component {
         breakfast: [],
         lunch: [],
         dinner: [],
-        diaries: []
+        diaries: [],
+        articles: []
     }
 
     componentDidMount() {
@@ -27,6 +28,15 @@ class DiaryContainer extends React.Component {
             let userDiaries = diaries.filter(d => d.user_id == this.props.currentUser.id)
             this.setState({ diaries: userDiaries })
         })
+
+       
+            fetch(`https://newsapi.org/v2/everything?q=covid&apiKey=4fd592e7770e4ca88f82d9d6adf1f0a6`)
+            .then(resp => resp.json())
+            .then(data => {
+                console.log("news api test", data.articles)
+                this.setState({articles: data.articles})
+            })
+        
     }
 
     mealButtonHandler = (e) => {
@@ -214,6 +224,7 @@ class DiaryContainer extends React.Component {
 
     render() {
         // let date = new Date().toDateString()
+        console.log("news test 2", this.state.articles)
         return(
             <div className='diary_container'>
                 <CalorieCalc breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
