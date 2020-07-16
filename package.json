@@ -9,6 +9,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropdown-select": "^4.3.1",
+    "react-modal": "^3.11.2",
     "react-picker": "^1.2.15",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
@@ -36,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27"
   }
 }
