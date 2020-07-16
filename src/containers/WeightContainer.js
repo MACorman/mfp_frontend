@@ -1,6 +1,7 @@
 import React from 'react'
 import WeightForm from '../components/WeightForm'
 import WeightGraph from '../components/WeightGraph'
+import GoalsModal from '../components/GoalsModal'
 
 class WeightContainer extends React.Component {
 
