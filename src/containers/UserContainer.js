@@ -27,7 +27,7 @@ class UserContainer extends React.Component {
                 {/* <img id='background' src="mfp-bg-5.png" alt=''/> */}
                     <Logout logout={this.props.logout}/>
                     <Button onClick={this.showModalFunc} color='olive'>Goals</Button>
-                    <GoalsModal showModal={this.state.showModal} showModalFunc={this.showModalFunc}/>
+                    <GoalsModal addGoals={this.props.addGoals} showModal={this.state.showModal} showModalFunc={this.showModalFunc}/>
                     <span className='welcome'>{`Welcome ${this.props.currentUser.name}!`}</span>
                     <span className='date'>{date}</span>
                 </div>

@@ -61,6 +61,20 @@ class App extends React.Component {
     })
   }
 
+  addGoals = (goals) => {
+    // console.log('add goals', goals)
+    fetch(`http://localhost:3000/users/${this.state.currentUser.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(goals)
+    })
+    .then(resp => resp.json())
+    .then(console.log)
+  }
+
 
   render() {
     return (
@@ -75,6 +89,7 @@ class App extends React.Component {
             {...routerProps}
             currentUser={this.state.currentUser ? this.state.currentUser : JSON.parse(sessionStorage.getItem("currentUser"))}
             logout={this.logout} 
+            addGoals={this.addGoals}
             />}/>
         </Switch>
       </div>
