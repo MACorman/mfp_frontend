@@ -10,9 +10,16 @@ class GoalsModal extends React.Component{
         // isOpen: false
     }
 
-    // toggleModal = () => {
-    //     this.setState({isOpen: !this.state.isOpen})
-    // }
+    submitHandler = (event) => {
+        event.preventDefault()
+        let goal_weight = parseInt(this.state.goalWeight)
+        let goal_calories = parseInt(this.state.goalCalories)
+        let goals = {
+            goal_weight,
+            goal_calories
+        }
+        this.props.addGoals(goals)
+    }
 
     render() {
         return (
@@ -24,13 +31,15 @@ class GoalsModal extends React.Component{
                 // style={customStyles}
                 contentLabel="Example Modal"
                 >
-                    <Button onClick={this.props.showModalFunc} color='olive'>close</Button>
-                    <div>Please enter your goal weight</div>
-                    <Input onChange={(e) => this.setState({input: e.target.value})} type='text' placeholder="Enter Goal Weight" value={this.state.goalWeight} />
-                    <div>Please enter your calorie goal</div>
-                    <Input onChange={(e) => this.setState({input: e.target.value})} type='text' placeholder="Enter Goal Calories" value={this.state.goalCalories} />
-                    <br/>
-                    <Button color='olive'>Submit</Button>
+                    <form onSubmit={this.submitHandler}>
+                        <Button onClick={this.props.showModalFunc} color='olive'>close</Button>
+                        <div>Please enter your goal weight</div>
+                        <Input onChange={(e) => this.setState({goalWeight: e.target.value})} type='text' placeholder="Enter Goal Weight" value={this.state.goalWeight} />
+                        <div>Please enter your calorie goal</div>
+                        <Input onChange={(e) => this.setState({goalCalories: e.target.value})} type='text' placeholder="Enter Goal Calories" value={this.state.goalCalories} />
+                        <br/>
+                        <Button color='olive'>Submit</Button>
+                    </form>
                 </Modal>
             </div>
         )
