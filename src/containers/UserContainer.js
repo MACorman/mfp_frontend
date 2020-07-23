@@ -6,6 +6,8 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import {Grid} from 'semantic-ui-react'
 import GoalsModal from '../components/GoalsModal'
 import {Button} from 'semantic-ui-react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCog } from '@fortawesome/free-solid-svg-icons'
 
 
 class UserContainer extends React.Component {
@@ -26,7 +28,9 @@ class UserContainer extends React.Component {
                 <div className='header'>
                 {/* <img id='background' src="mfp-bg-5.png" alt=''/> */}
                     <Logout logout={this.props.logout}/>
-                    <Button onClick={this.showModalFunc} color='olive'>Goals</Button>
+                    <div className='nav-btns'>
+                        <FontAwesomeIcon icon={faUserCog} size={'2x'} color={'white'} onClick={this.showModalFunc} />
+                    </div>
                     <GoalsModal addGoals={this.props.addGoals} showModal={this.state.showModal} showModalFunc={this.showModalFunc}/>
                     <span className='welcome'>{`Welcome ${this.props.currentUser.name}!`}</span>
                     <span className='date'>{date}</span>

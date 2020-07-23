@@ -72,7 +72,9 @@ class App extends React.Component {
       body: JSON.stringify(goals)
     })
     .then(resp => resp.json())
-    .then(console.log)
+    .then(data => {
+      this.setState({ currentUser: data})
+    })
   }
 
 
