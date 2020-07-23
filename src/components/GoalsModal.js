@@ -19,6 +19,8 @@ class GoalsModal extends React.Component{
             goal_calories
         }
         this.props.addGoals(goals)
+        this.setState({goalWeight: null, goalCalories: null})
+        this.props.showModalFunc()
     }
 
     render() {

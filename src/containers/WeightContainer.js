@@ -6,7 +6,8 @@ import GoalsModal from '../components/GoalsModal'
 class WeightContainer extends React.Component {
 
     state = {
-        weights: []
+        weights: [],
+        todaysWeight: null
     }
     componentDidMount() {
         fetch('http://localhost:3000/weights')
@@ -33,13 +34,14 @@ class WeightContainer extends React.Component {
         .then(resp => resp.json())
         .then(weight => {
             let updatedWeights = [...this.state.weights, weight]
-            this.setState({ weights: updatedWeights })
+            this.setState({ weights: updatedWeights, todaysWeight: weight.measurement })
         })
     }
 
     render() {
         return(
             <div className='weight_container'>
+                {this.props.currentUser.goal_weight === this.state.todaysWeight && alert("Congratulations, you've reached your goal weight!")}
                 <WeightForm addWeight={this.addWeight} />
                 <WeightGraph weights={this.state.weights} />
             </div>

@@ -227,7 +227,7 @@ class DiaryContainer extends React.Component {
         console.log("news test 2", this.state.articles)
         return(
             <div className='diary_container'>
-                <CalorieCalc breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
+                <CalorieCalc currentUser={this.props.currentUser} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner}/>
                 {/* <DiaryPage nutritionButtonHandler={this.nutritionButtonHandler} history={this.props.history} location={this.props.location} match={this.props.match} breakfast={this.state.breakfast} lunch={this.state.lunch} dinner={this.state.dinner} mealButtonHandler={this.mealButtonHandler}/>
                 {this.state.show === 'search' && <FoodSearch addFoodToDiary={this.addFoodToDiary}/>}
                 {this.state.show === 'nutrition' && <NutritionalBreakdown />} */}

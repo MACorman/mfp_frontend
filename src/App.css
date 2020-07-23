@@ -55,7 +55,9 @@ html, body {
 }
 
 .welcome {
-  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   font-weight: 700;
   font-size: 2.25em;
   color: white;
@@ -71,7 +73,9 @@ html, body {
 }
 
 .date {
-  text-align: center;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.25em;
   color: white;
   display: block;
@@ -168,4 +172,9 @@ html, body {
 .nutrition-details {
   padding-top: 14px;
 
+}
+
+.nav-btns {
+  float: right;
+  padding: 10px;
 }
