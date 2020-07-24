@@ -69,9 +69,9 @@ class FoodResultCard extends React.Component {
         this.props.addFoodToDiary(foodID, servings, foodName)
     }
 
-    handleClickQuantity = () => {
+    // handleClickQuantity = () => {
 
-    }
+    // }
 
     selectHandler = (e, data) => {
         let servings = data.value
