@@ -41,7 +41,7 @@ class WeightContainer extends React.Component {
     render() {
         return(
             <div className='weight_container'>
-                {this.props.currentUser.goal_weight === this.state.todaysWeight && alert("Congratulations, you've reached your goal weight!")}
+                {/* {this.props.currentUser.goal_weight === this.state.todaysWeight && alert("Congratulations, you've reached your goal weight!")} */}
                 <WeightForm addWeight={this.addWeight} />
                 <WeightGraph weights={this.state.weights} />
             </div>
