@@ -178,3 +178,40 @@ html, body {
   float: right;
   padding: 10px;
 }
+
+.goals-modal-form {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.goals-modal {
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  
+
+}
+
+.modal-done-btn {
+  float: right;
+  padding-top: 15px;
+  padding-right: 15px;
+}
+
+.text {
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.modal-submit {
+  padding-top: 10px;
+}

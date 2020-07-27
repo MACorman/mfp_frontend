@@ -27,20 +27,25 @@ class GoalsModal extends React.Component{
         return (
             <div>
                 <Modal
+                className='goals-modal'
                 isOpen={this.props.showModal}
                 // onAfterOpen={afterOpenModal}
                 // onRequestClose={closeModal}
                 // style={customStyles}
                 contentLabel="Example Modal"
                 >
-                    <form onSubmit={this.submitHandler}>
+                    <div className='modal-done-btn' >
                         <Button onClick={this.props.showModalFunc} color='olive'>close</Button>
-                        <div>Please enter your goal weight</div>
+                    </div>
+                    <form className='goals-modal-form' onSubmit={this.submitHandler}>
+                        <div className='text'>Please enter your goal weight</div>
                         <Input onChange={(e) => this.setState({goalWeight: e.target.value})} type='text' placeholder="Enter Goal Weight" value={this.state.goalWeight} />
-                        <div>Please enter your calorie goal</div>
+                        <div className='text'>Please enter your calorie goal</div>
                         <Input onChange={(e) => this.setState({goalCalories: e.target.value})} type='text' placeholder="Enter Goal Calories" value={this.state.goalCalories} />
                         <br/>
-                        <Button color='olive'>Submit</Button>
+                        <div className='modal-submit'>
+                            <Button color='olive'>Submit</Button>
+                        </div>
                     </form>
                 </Modal>
             </div>
